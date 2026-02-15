@@ -23,21 +23,6 @@ parsing.
 
 ------------------------------------------------------------------------
 
-## Repository Layout
-
-Planned structure:
-
-    cmd/guanabana/         CLI tool
-    internal/grammar/      Grammar AST structures
-    internal/analysis/     FIRST/FOLLOW, nullable, etc.
-    internal/lalr/         Item sets and table construction
-    internal/runtime/      Table-driven parser engine
-    examples/calc/         Calculator grammar and evaluator
-    examples/wsn/          WSN grammar and parser
-    docs/                  Course materials
-
-------------------------------------------------------------------------
-
 ## Philosophy
 
 -   Practical over academic.
@@ -46,5 +31,3 @@ Planned structure:
 -   Deterministic, testable components.
 -   Clean, idiomatic Go.
 
-This repository accompanies the "Guanabana 100" course outline in
-`docs/COURSE-100.md`.

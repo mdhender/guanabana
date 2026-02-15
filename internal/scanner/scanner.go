@@ -312,10 +312,37 @@ func (s *Scanner) scanAction() rune {
 	ch := s.next()
 	level := 1
 	for level > 0 && ch != EOF {
-		if ch == '{' {
+		switch ch {
+		case '{':
 			level++
-		} else if ch == '}' {
+		case '}':
 			level--
+		case '"', '\'':
+			quote := ch
+			ch = s.next()
+			for ch != quote {
+				if ch == EOF {
+					s.error("unterminated string in action")
+					return ch
+				}
+				if ch == '\\' {
+					ch = s.next()
+					if ch == EOF {
+						s.error("unterminated string in action")
+						return ch
+					}
+				}
+				ch = s.next()
+			}
+		case '`':
+			ch = s.next()
+			for ch != '`' {
+				if ch == EOF {
+					s.error("unterminated raw string in action")
+					return ch
+				}
+				ch = s.next()
+			}
 		}
 		ch = s.next()
 	}

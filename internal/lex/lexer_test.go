@@ -184,7 +184,7 @@ expr ::= IDENT. {
 }
 
 func TestBracesInStringsInCodeBlock(t *testing.T) {
-	src := []byte(`expr ::= IDENT. { x = "{"; }`)
+	src := []byte(`expr ::= IDENT. { x = "}"; }`)
 	tokens, err := Tokenize("test.y", src)
 	if err != nil {
 		t.Fatalf("Tokenize error: %v", err)

@@ -34,10 +34,10 @@ defined here are the shared vocabulary.
 
 ### Files to create
 
-| File | Purpose |
-|------|---------|
-| `internal/lex/token.go` | `TokenType` constants, `Token` struct, `Position` struct |
-| `internal/lex/token_test.go` | Tests for token type string representation |
+| File                         | Purpose                                                  |
+|------------------------------|----------------------------------------------------------|
+| `internal/lex/token.go`      | `TokenType` constants, `Token` struct, `Position` struct |
+| `internal/lex/token_test.go` | Tests for token type string representation               |
 
 ### Types defined
 
@@ -123,9 +123,9 @@ invariants are:
 
 ## Repository changes
 
-| Action | File |
-|--------|------|
-| Create | `internal/lex/token.go` |
+| Action | File                         |
+|--------|------------------------------|
+| Create | `internal/lex/token.go`      |
 | Create | `internal/lex/token_test.go` |
 
 No other files are modified.

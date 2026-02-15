@@ -35,9 +35,9 @@ should be consumed by the lexer and not emitted as tokens.
 
 ### Files to create / modify
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `internal/lex/lexer.go` | Create | Lexer implementation |
+| File                         | Action | Purpose                          |
+|------------------------------|--------|----------------------------------|
+| `internal/lex/lexer.go`      | Create | Lexer implementation             |
 | `internal/lex/lexer_test.go` | Create | Comprehensive token stream tests |
 
 ### Function signatures
@@ -84,9 +84,9 @@ function Tokenize(filename, src):
 
 ## Repository changes
 
-| Action | File |
-|--------|------|
-| Create | `internal/lex/lexer.go` |
+| Action | File                         |
+|--------|------------------------------|
+| Create | `internal/lex/lexer.go`      |
 | Create | `internal/lex/lexer_test.go` |
 
 ## Unit tests (pass/fail gate)

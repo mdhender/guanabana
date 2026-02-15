@@ -1,6 +1,6 @@
 // Copyright (c) 2025 Michael D Henderson. All rights reserved.
 
-// Package lexers implements a lexer for turn reports.
+// Package lexers implements a lexer for Guanabana grammars.
 // Returns tokens that contain copies from the input buffer.
 package lex
 
@@ -11,23 +11,20 @@ import (
 	"github.com/mdhender/guanabana/internal/scanner"
 )
 
-// TODO(lesson-02): lexer implementation
-
 // Tokenize scans the source and returns all tokens including a final TOKEN_EOF.
 // The filename is used only for Position fields in the returned tokens.
 func Tokenize(filename string, src []byte) (tokens []Token, err error) {
 	r := bytes.NewReader(src)
 	s := &scanner.Scanner{}
+	s.Filename = filename
 	_, err = s.Init(r)
 	if err != nil {
 		return nil, err
 	}
+
 	ch := s.Scan()
 	for ; ch != scanner.EOF; ch = s.Scan() {
-		//value := scanner.TokenString(ch)
-		//log.Printf("ch is %d, tok is %q\n", ch, value)
 		tt, literal := TOKEN_ERROR, s.TokenText()
-		pos := Position{File: s.Filename, Line: s.Line, Column: s.Column}
 		switch ch {
 		case '.':
 			tt = TOKEN_DOT
@@ -116,7 +113,11 @@ func Tokenize(filename string, src []byte) (tokens []Token, err error) {
 		tokens = append(tokens, Token{
 			Type:    tt,
 			Literal: literal,
-			Pos:     pos,
+			Pos: Position{
+				File:   s.Filename,
+				Line:   s.Line,
+				Column: s.Column,
+			},
 		})
 	}
 	if ch != scanner.EOF {

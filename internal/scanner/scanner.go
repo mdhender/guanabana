@@ -242,6 +242,7 @@ func (s *Scanner) Init(r io.Reader) (*Scanner, error) {
 // next reads and returns the next Unicode character.
 func (s *Scanner) next() rune {
 	if !(s.srcPos < len(s.srcBuf)) {
+		s.lastCharLen = 0
 		return EOF
 	}
 

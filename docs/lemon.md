@@ -1250,3 +1250,18 @@ domain. You can use the code for any purpose and without attribution.
 
 The code comes with no warranty. If it breaks, you get to keep both
 pieces.
+
+
+## Appendix A - Go
+
+The `lexer` driving the `parser` feels very natural in Go:
+
+```go
+p := parser.New()
+
+for tok := range lexer.Tokens() {
+    p.Feed(tok)
+}
+
+ast := p.Result()
+```
